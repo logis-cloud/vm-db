@@ -1,5 +1,5 @@
 -- Seleccionar la base de datos especificada en el docker-compose
-USE db_clients;
+USE clients_db;
 
 -- 1. Crear tabla padre (clientes)
 CREATE TABLE IF NOT EXISTS clientes (

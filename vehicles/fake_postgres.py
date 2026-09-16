@@ -14,8 +14,8 @@ DB_CONFIG = {
     'host': os.environ.get('DB_HOST', 'localhost'),
     'port': os.environ.get('DB_PORT', '5432'),
     'user': os.environ.get('DB_USER', 'postgres'),
-    'password': os.environ.get('DB_PASSWORD', 'postgrespassword'),
-    'dbname': os.environ.get('DB_NAME', 'db_vehiculos'),
+    'password': os.environ.get('DB_PASSWORD', 'postgres123'),
+    'dbname': os.environ.get('DB_NAME', 'vehicles_db'),
 }
 
 TOTAL_VEHICULOS = 20000

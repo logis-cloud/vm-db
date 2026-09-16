@@ -9,8 +9,8 @@ fake = Faker('es_ES')
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'rootpassword',
-    'database': 'db_clientes'
+    'password': 'root123',
+    'database': 'clients_db'
 }
 
 TOTAL_CLIENTES = 20000
