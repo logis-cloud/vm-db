@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  mysql-clients:
+    image: mysql:8.0
+    container_name: mysql-clients
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: clients_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_clients_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot123"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  postgres-vehicles:
+    image: postgres:16
+    container_name: postgres-vehicles
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+      POSTGRES_DB: vehicles_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_vehicles_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d vehicles_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mysql_clients_data:
+  postgres_vehicles_data:
+
