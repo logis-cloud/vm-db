@@ -40,18 +40,18 @@ services:
       timeout: 5s
       retries: 10
 
-  mongodb-envios:
+  mongodb-shipments:
     image: mongo:7
-    container_name: mongodb-envios
+    container_name: mongodb-shipments
     restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root123
-      MONGO_INITDB_DATABASE: envios_db
+      MONGO_INITDB_DATABASE: shipments_db
     ports:
       - "27017:27017"
     volumes:
-      - mongodb_envios_data:/data/db
+      - mongodb_shipments_data:/data/db
       # A diferencia de MySQL/Postgres, Mongo no necesita un script de
       # creación de tablas/colecciones: las crea sola al primer insert.
       # El "validador de schema" en este stack es el mongoose.Schema
