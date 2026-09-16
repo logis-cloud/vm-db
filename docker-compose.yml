@@ -12,6 +12,8 @@ services:
       - "3306:3306"
     volumes:
       - mysql_clients_data:/var/lib/mysql
+      # Se ejecuta UNA sola vez, solo si el volumen está vacío (primer arranque).
+      - ./clients/01_schema_mysql.sql:/docker-entrypoint-initdb.d/01_schema_mysql.sql:ro
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot123"]
       interval: 5s
@@ -30,6 +32,8 @@ services:
       - "5432:5432"
     volumes:
       - postgres_vehicles_data:/var/lib/postgresql/data
+      # Se ejecuta UNA sola vez, solo si el volumen está vacío (primer arranque).
+      - ./vehicles/01_schema_postgres.sql:/docker-entrypoint-initdb.d/01_schema_postgres.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d vehicles_db"]
       interval: 5s
@@ -39,4 +43,3 @@ services:
 volumes:
   mysql_clients_data:
   postgres_vehicles_data:
-
