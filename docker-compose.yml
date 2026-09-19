@@ -65,4 +65,4 @@ services:
 volumes:
   mysql_clients_data:
   postgres_vehicles_data:
-  mongodb_envios_data:
+  mongodb_shipments_data:
